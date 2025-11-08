@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Associate Product Manager – Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-primary: #414a37; /* dark olive */
+        --color-accent: #99744a; /* warm brown */
+        --color-light: #dbc2a6; /* soft beige */
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--color-primary);
+        color: var(--color-light);
+        scroll-behavior: smooth;
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .skill-card {
+        background: var(--color-light);
+        color: var(--color-primary);
+        border-radius: 0.75rem;
+        padding: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .skill-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+      .icon-circle {
+        background: var(--color-accent);
+        color: var(--color-primary);
+        border-radius: 9999px;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      /* make external svg logos behave like icons */
+      .tool-logo {
+        width: 20px;
+        height: 20px;
+        display: block;
+        filter: brightness(0) saturate(100%) invert(17%) sepia(13%)
+          saturate(447%) hue-rotate(52deg) brightness(90%) contrast(88%);
+      }
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+        .skill-card {
+          padding: 1rem;
+        }
+      }
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.25rem;
+        }
+        h2 {
+          font-size: 1.75rem;
+        }
+        .skill-card {
+          padding: 1rem;
+        }
+        #skills .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Nav -->
+    <header class="bg-[var(--color-accent)] text-[var(--color-primary)]">
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <span class="text-2xl font-bold">Esther Okebule</span>
+
+          <!-- Mobile toggle -->
+          <button
+            id="menu-toggle"
+            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md focus:outline-none"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-7 h-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
+          <!-- Desktop menu -->
+          <nav class="hidden md:flex items-center space-x-8 font-semibold">
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#projects" class="hover:underline">Projects</a>
+            <a href="#skills" class="hover:underline">Skills</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown (absolute, full-width, no overflow) -->
+      <nav id="mobile-menu" class="hidden md:hidden">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 pb-4">
+          <div
+            class="flex flex-col gap-2 font-semibold bg-[var(--color-accent)] rounded-lg p-4 shadow"
+          >
+            <a
+              href="#about"
+              class="py-2 rounded hover:bg-[var(--color-light)] hover:text-[var(--color-primary)]"
+              >About</a
+            >
+            <a
+              href="#projects"
+              class="py-2 rounded hover:bg-[var(--color-light)] hover:text-[var(--color-primary)]"
+              >Projects</a
+            >
+            <a
+              href="#skills"
+              class="py-2 rounded hover:bg-[var(--color-light)] hover:text-[var(--color-primary)]"
+              >Skills</a
+            >
+            <a
+              href="#contact"
+              class="py-2 rounded hover:bg-[var(--color-light)] hover:text-[var(--color-primary)]"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section
+      class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-14 flex flex-col md:flex-row items-center gap-10"
+    >
+      <div class="md:w-1/2 fade text-center md:text-left">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          Associate Product Manager
+        </h1>
+        <p class="text-lg md:text-xl mb-6">
+          A product manager passionate about clarity, user-focused solutions,
+          and simple, impactful execution.
+        </p>
+        <a
+          href="https://drive.google.com/file/d/1g8Zn2TWMaKL0Bk6aWwYRW7mZA4JUS-g3/view?usp=drive_link"
+          class="inline-block bg-[var(--color-accent)] text-[var(--color-primary)] px-6 py-3 rounded-full font-semibold hover:bg-[var(--color-light)] hover:text-[var(--color-primary)] transition-colors lg:inline-block hidden"
+          >View resume</a
+        >
+      </div>
+      <div class="md:w-1/2 fade flex justify-center">
+        <img
+          src="image.png"
+          alt="Esther Okebule"
+          class="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl object-cover shadow-lg"
+        />
+      </div>
+      <a
+        href="https://drive.google.com/file/d/1g8Zn2TWMaKL0Bk6aWwYRW7mZA4JUS-g3/view?usp=drive_link"
+        class="inline-block bg-[var(--color-accent)] text-[var(--color-primary)] px-6 py-3 rounded-full font-semibold hover:bg-[var(--color-light)] hover:text-[var(--color-primary)] transition-colors lg:hidden"
+        >View resume</a
+      >
+    </section>
+
+    <!-- About -->
+    <section
+      id="about"
+      class="bg-[var(--color-light)] text-[var(--color-primary)] relative overflow-hidden"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-20 fade">
+        <h2
+          class="text-3xl sm:text-4xl font-semibold mb-12 text-[var(--color-accent)] text-center tracking-wide"
+        >
+          About Me
+        </h2>
+
+        <!-- Intro Banner -->
+        <div
+          class="bg-[var(--color-primary)] text-[var(--color-light)] rounded-3xl shadow-lg p-6 sm:p-10 mb-14 text-center transform transition-all duration-700 hover:shadow-2xl fade delay-[100ms]"
+        >
+          <p
+            class="text-lg leading-relaxed sm:text-xl font-light tracking-wide max-w-3xl mx-auto"
+          >
+            I’m an <strong>Associate Product Manager</strong> passionate about
+            clarity, user-focused design, and meaningful collaboration. In my
+            internship at <strong>BeTechified</strong>, I worked on
+            <strong>mobile</strong> and
+            <strong>AI-powered products</strong> that strengthened my skills in
+            <strong>research, documentation, and team communication</strong>.
+          </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <!-- Journey Card -->
+          <div
+            class="fade delay-[200ms] bg-white/80 backdrop-blur-md border border-[var(--color-accent)] rounded-2xl p-6 shadow-md transform transition duration-500 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <h3
+              class="bg-[var(--color-accent)] text-[var(--color-light)] px-4 py-1 rounded-full text-sm font-semibold inline-block mb-4"
+            >
+              My Journey
+            </h3>
+            <p class="text-base leading-relaxed font-light tracking-wide">
+              My path into product management began from a love of
+              <strong>organization, creativity, and problem-solving</strong>. I
+              naturally enjoy turning scattered ideas into structure, guiding
+              discussions, and keeping the user at the center of every decision.
+            </p>
+          </div>
+
+          <!-- Collaboration Card -->
+          <div
+            class="fade delay-[400ms] bg-white/80 backdrop-blur-md border border-[var(--color-accent)] rounded-2xl p-6 shadow-md transform transition duration-500 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <h3
+              class="bg-[var(--color-accent)] text-[var(--color-light)] px-4 py-1 rounded-full text-sm font-semibold inline-block mb-4"
+            >
+              Collaboration
+            </h3>
+            <p class="text-base leading-relaxed font-light tracking-wide">
+              At <strong>BeTechified</strong>, I collaborated with designers and
+              developers to define user needs, refine features, and deliver
+              value-driven outcomes. I learned how strong
+              <strong>documentation, communication, and clarity</strong> keep
+              teams aligned and efficient.
+            </p>
+          </div>
+
+          <!-- Growth Card -->
+          <div
+            class="fade delay-[600ms] bg-white/80 backdrop-blur-md border border-[var(--color-accent)] rounded-2xl p-6 shadow-md transform transition duration-500 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <h3
+              class="bg-[var(--color-accent)] text-[var(--color-light)] px-4 py-1 rounded-full text-sm font-semibold inline-block mb-4"
+            >
+              Growth Mindset
+            </h3>
+            <p class="text-base leading-relaxed font-light tracking-wide">
+              Every project has been a learning curve — from writing clear PRDs
+              and structuring
+              <strong>research documents</strong> to presenting deliverables
+              effectively. I’m eager to keep evolving and apply a
+              <strong>curious, data-driven mindset</strong> in future roles.
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Highlights -->
+        <div class="text-center fade delay-[800ms]">
+          <h3
+            class="text-xl font-semibold mb-6 text-[var(--color-accent)] tracking-wide"
+          >
+            What I Bring
+          </h3>
+          <div class="flex flex-wrap justify-center gap-3">
+            <span
+              class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-light)] rounded-full text-sm font-medium shadow-md transition-transform duration-300 hover:-translate-y-1"
+            >
+              Empathy-Driven Thinking
+            </span>
+            <span
+              class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-light)] rounded-full text-sm font-medium shadow-md transition-transform duration-300 hover:-translate-y-1"
+            >
+              Clear Communication
+            </span>
+            <span
+              class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-light)] rounded-full text-sm font-medium shadow-md transition-transform duration-300 hover:-translate-y-1"
+            >
+              Cross-Functional Collaboration
+            </span>
+            <span
+              class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-light)] rounded-full text-sm font-medium shadow-md transition-transform duration-300 hover:-translate-y-1"
+            >
+              Research & Documentation
+            </span>
+            <span
+              class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-light)] rounded-full text-sm font-medium shadow-md transition-transform duration-300 hover:-translate-y-1"
+            >
+              Curiosity & Growth Mindset
+            </span>
+          </div>
+        </div>
+
+        <!-- CTA Banner -->
+        <div
+          class="mt-16 fade delay-[1000ms] bg-[var(--color-accent)] text-[var(--color-primary)] rounded-3xl p-8 sm:p-10 text-center shadow-xl transform transition duration-700 hover:scale-[1.02]"
+        >
+          <p class="text-lg sm:text-xl font-semibold mb-3 tracking-wide">
+            Open to <strong>internship opportunities</strong> — remote, hybrid,
+            or onsite.
+          </p>
+          <p class="text-base font-light tracking-wide max-w-2xl mx-auto">
+            I’m eager to learn, collaborate, and grow with teams building
+            thoughtful and impactful products.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section
+      id="projects"
+      class="bg-[var(--color-primary)] text-[var(--color-light)]"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-14 fade">
+        <h2 class="text-3xl font-semibold mb-8 text-[var(--color-accent)]">
+          Projects
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- FilmBridge -->
+          <div
+            class="bg-[var(--color-light)] text-[var(--color-primary)] rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-[1.02] hover:shadow-2xl"
+          >
+            <div
+              class="relative w-full h-52 bg-[var(--color-primary)] flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="filmbridge.jpg"
+                alt="FilmBridge"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-2xl font-semibold mb-2 text-[var(--color-accent)]"
+              >
+                FilmBridge
+              </h3>
+              <p class="mb-2">
+                <strong>Problem:</strong> Independent filmmakers struggle to
+                distribute their work widely due to limited local streaming
+                options.
+              </p>
+              <p class="mb-2">
+                <strong>Solution:</strong> A mobile platform where filmmakers
+                can showcase and distribute their content to a wider audience.
+              </p>
+              <p class="font-semibold mb-1">My Contributions:</p>
+              <ul class="list-disc list-inside space-y-1 mb-4">
+                <li>Assisted in PRD development</li>
+                <li>Collaborated on design and presentation slides</li>
+                <li>Conducted market research and user understanding</li>
+                <li>Strengthened communication and team collaboration</li>
+              </ul>
+
+              <a
+                href="https://www.figma.com/design/Yexh8hrOfdOsFvBlsYeVcq/FilmBridge?m=auto&t=0pE2U95SiHzH5c1H-6"
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-[var(--color-accent)] text-[var(--color-primary)] px-5 py-2.5 rounded-full font-semibold transition-all duration-300 hover:translate-x-1 hover:bg-[var(--color-primary)] hover:text-[var(--color-light)]"
+              >
+                View Prototype
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- MedPro -->
+          <div
+            class="bg-[var(--color-light)] text-[var(--color-primary)] rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-[1.02] hover:shadow-2xl"
+          >
+            <div
+              class="relative w-full h-52 bg-[var(--color-primary)] flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="medpro.jpg"
+                alt="MedPro"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-2xl font-semibold mb-2 text-[var(--color-accent)]"
+              >
+                MedPro
+              </h3>
+              <p class="mb-2">
+                <strong>Problem:</strong> Patients struggle to adhere to
+                treatment plans due to lack of engagement.
+              </p>
+              <p class="mb-2">
+                <strong>Solution:</strong> An AI-powered medical assistant that
+                helps patients stay engaged with treatment and follow-ups.
+              </p>
+              <p class="font-semibold mb-1">My Contributions:</p>
+              <ul class="list-disc list-inside space-y-1 mb-4">
+                <li>Created and documented the PRD on Confluence</li>
+                <li>Assisted in UI/UX design and presentation slides</li>
+                <li>Conducted user research</li>
+                <li>Enhanced communication and collaboration</li>
+              </ul>
+
+              <a
+                href="https://www.figma.com/design/tvTaLOOpFUp7V9Qqbz1Ks0/MEDPRO?m=auto&t=Fh9PF0ACA23tiB70-6"
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-[var(--color-accent)] text-[var(--color-primary)] px-5 py-2.5 rounded-full font-semibold transition-all duration-300 hover:translate-x-1 hover:bg-[var(--color-primary)] hover:text-[var(--color-light)]"
+              >
+                View Prototype
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- MobiKudi -->
+          <div
+            class="bg-[var(--color-light)] text-[var(--color-primary)] rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-[1.02] hover:shadow-2xl"
+          >
+            <div
+              class="relative w-full h-52 bg-[var(--color-primary)] flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="mobikudi.jpg"
+                alt="MobiKudi"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-2xl font-semibold mb-2 text-[var(--color-accent)]"
+              >
+                MobiKudi (Ongoing)
+              </h3>
+              <p class="mb-2">
+                <strong>Problem:</strong> Low-income users struggle to manage
+                money, save effectively, and avoid scams.
+              </p>
+              <p class="font-semibold mb-1">What I Do:</p>
+              <ul class="list-disc list-inside space-y-1 mb-4">
+                <li>Leading a team of designers and developers</li>
+                <li>Organizing sprints, tasks, and communication</li>
+                <li>Ensuring clarity and team alignment</li>
+                <li>Supervising product design and strategy</li>
+                <li>Managing research, features, and MVP planning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section
+      id="skills"
+      class="bg-[var(--color-light)] text-[var(--color-primary)]"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-16 fade">
+        <h2 class="text-3xl font-semibold mb-10 text-[var(--color-accent)]">
+          Skills
+        </h2>
+
+        <!-- Product Skills -->
+        <h3 class="text-2xl font-semibold mb-4">Product Skills</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+          <div class="skill-card">
+            <div class="icon-circle">
+              <!-- research -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35M14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            </div>
+            <span>User Research</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <!-- strategy -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.37 16.95l-.42.75a2.25 2.25 0 104.1 0l-.42-.75a7.38 7.38 0 01-3.26 0zM2.25 11a7.5 7.5 0 0115 0 6.77 6.77 0 01-.56 2.77 2.25 2.25 0 01-.69.94L15 15a2.25 2.25 0 01-3 0L8 14.71a2.25 2.25 0 01-.69-.94A6.77 6.77 0 016.75 11z"
+                />
+              </svg>
+            </div>
+            <span>Product Strategy</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <!-- prd -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 3.75A2.25 2.25 0 018.25 1.5h4.5A2.25 2.25 0 0115 3.75V9l4.5 4.5v6.75A2.25 2.25 0 0117.25 21H8.25A2.25 2.25 0 016 18.75V3.75z"
+                />
+              </svg>
+            </div>
+            <span>PRD Writing</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <!-- market analysis -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 3v18h18M9 13V9m6 4V5m-3 8V8"
+                />
+              </svg>
+            </div>
+            <span>Market Analysis</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <!-- prioritization -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 4h18M6 8h12M9 12h6m-2.25 4h-1.5a1.5 1.5 0 000 3h1.5a1.5 1.5 0 000-3z"
+                />
+              </svg>
+            </div>
+            <span>Feature Prioritization</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <!-- leadership -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 20h5a2 2 0 002-2v-2a6 6 0 00-6-6 6 6 0 00-6 6v2a2 2 0 002 2h5zM6 20h5a2 2 0 002-2v-2a6 6 0 00-6-6 6 6 0 00-6 6v2a2 2 0 002 2h5zM6 12a3 3 0 110-6 3 3 0 010 6zm12 0a3 3 0 110-6 3 3 0 010 6z"
+                />
+              </svg>
+            </div>
+            <span>Team Leadership</span>
+          </div>
+        </div>
+
+        <!-- Tools (logos) -->
+        <h3 class="text-2xl font-semibold mb-4">Tools</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+          <div class="skill-card">
+            <div class="icon-circle">
+              <img
+                class="tool-logo"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/jira.svg"
+                alt="Jira"
+              />
+            </div>
+            <span>Jira</span>
+          </div>
+          <div class="skill-card">
+            <div class="icon-circle">
+              <img
+                class="tool-logo"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/confluence.svg"
+                alt="Confluence"
+              />
+            </div>
+            <span>Confluence</span>
+          </div>
+          <div class="skill-card">
+            <div class="icon-circle">
+              <img
+                class="tool-logo"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg"
+                alt="Figma"
+              />
+            </div>
+            <span>Figma</span>
+          </div>
+          <div class="skill-card">
+            <div class="icon-circle">
+              <img
+                class="tool-logo"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/notion.svg"
+                alt="Notion"
+              />
+            </div>
+            <span>Notion</span>
+          </div>
+          <div class="skill-card">
+            <div class="icon-circle">
+              <img
+                class="tool-logo"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/canva.svg"
+                alt="Canva"
+              />
+            </div>
+            <span>Canva</span>
+          </div>
+          <div class="skill-card">
+            <div class="icon-circle">
+              <img
+                class="tool-logo"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg"
+                alt="Google Workspace"
+              />
+            </div>
+            <span>Google Workspace</span>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <h3 class="text-2xl font-semibold mb-4">Soft Skills</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="skill-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M7.5 10.5h9m-9 3h6.75m1.5-8.625C17.25 3.75 15.75 3 14.25 3H7.5A4.5 4.5 0 003 7.5v6A4.5 4.5 0 007.5 18h.273c.404 0 .791.156 1.082.438l3.387 3.221c.672.64 1.758.18 1.758-.756V18.75A4.5 4.5 0 0018 14.25v-6c0-1.5-.75-3-2.25-3.375z"
+                />
+              </svg>
+            </div>
+            <span>Communication</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M18 20h-3a2 2 0 01-2-2v-2a6 6 0 00-6-6 6 6 0 00-6 6v2a2 2 0 01-2 2H6"
+                />
+                <circle cx="15" cy="8" r="3" />
+                <circle cx="6" cy="8" r="3" />
+              </svg>
+            </div>
+            <span>Collaboration</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25M15.535 4.97l-1.637 1.637M21 12h-2.25M17.03 15.535l-1.637-1.637M12 18.75v2.25M8.465 19.03l1.637-1.637M3 12h2.25M6.97 8.465l1.637 1.637M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z"
+                />
+              </svg>
+            </div>
+            <span>Curiosity</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12h6m-6 4h6m-6-8h6m3-5.25H6a2.25 2.25 0 00-2.25 2.25V19.5A2.25 2.25 0 006 21.75h12a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25z"
+                />
+              </svg>
+            </div>
+            <span>Organized & Detail-Oriented</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 3.75A2.25 2.25 0 018.25 1.5h7.5A2.25 2.25 0 0118 3.75v7.5A2.25 2.25 0 0115.75 13.5H13.5V15.75A2.25 2.25 0 0111.25 18h-7.5A2.25 2.25 0 011.5 15.75v-7.5A2.25 2.25 0 013.75 6H6z"
+                />
+              </svg>
+            </div>
+            <span>Problem Solving</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.5 4.5l4.75-1.5M3 3v6h6m10.5 10.5l-4.75 1.5M21 21v-6h-6m-9 0a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0z"
+                />
+              </svg>
+            </div>
+            <span>Adaptable & Proactive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section
+      id="contact"
+      class="bg-[var(--color-primary)] text-[var(--color-light)]"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-14 fade">
+        <h2 class="text-3xl font-semibold mb-4 text-[var(--color-accent)]">
+          Contact
+        </h2>
+        <p class="mb-2">
+          Feel free to reach out for collaboration or opportunities.
+        </p>
+        <p class="mb-2">
+          <strong>Email:</strong>
+          <a
+            href="mailto:estherokebule2003@gmail.com"
+            class="underline hover:text-[var(--color-accent)]"
+            >estherokebule2003@gmail.com</a
+          >
+        </p>
+        <p>
+          <strong>LinkedIn:</strong>
+          <a
+            href="https://linkedin.com/in/esther-okebule"
+            target="_blank"
+            class="underline hover:text-[var(--color-accent)]"
+            >linkedin.com/in/esther-okebule</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <footer
+      class="bg-[var(--color-accent)] text-[var(--color-primary)] py-4 text-center text-sm"
+    >
+      &copy; <span id="year"></span> Esther Okebule. All rights reserved.
+    </footer>
+
+    <script>
+      // Fade-in on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("show");
+          });
+        },
+        { threshold: 0.2 }
+      );
+      document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+
+      // Mobile menu
+      const toggle = document.getElementById("menu-toggle");
+      const mobile = document.getElementById("mobile-menu");
+      toggle.addEventListener("click", () => mobile.classList.toggle("hidden"));
+      // close on link click
+      mobile
+        .querySelectorAll("a")
+        .forEach((a) =>
+          a.addEventListener("click", () => mobile.classList.add("hidden"))
+        );
+
+      // Current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+      // Fade-in on scroll with staggered delays
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("show");
+              // Optional: once revealed, stop observing
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
